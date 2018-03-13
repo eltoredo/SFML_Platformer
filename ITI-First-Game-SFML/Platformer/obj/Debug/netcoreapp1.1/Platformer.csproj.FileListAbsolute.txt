@@ -1,0 +1,8 @@
+D:\DéveloppementC#\ITI-First-Game-SFML\Platformer\bin\Debug\netcoreapp1.1\Platformer.deps.json
+D:\DéveloppementC#\ITI-First-Game-SFML\Platformer\bin\Debug\netcoreapp1.1\Platformer.dll
+D:\DéveloppementC#\ITI-First-Game-SFML\Platformer\bin\Debug\netcoreapp1.1\Platformer.pdb
+D:\DéveloppementC#\ITI-First-Game-SFML\Platformer\obj\Debug\netcoreapp1.1\Platformer.csprojResolveAssemblyReference.cache
+D:\DéveloppementC#\ITI-First-Game-SFML\Platformer\obj\Debug\netcoreapp1.1\Platformer.csproj.CoreCompileInputs.cache
+D:\DéveloppementC#\ITI-First-Game-SFML\Platformer\obj\Debug\netcoreapp1.1\Platformer.AssemblyInfo.cs
+D:\DéveloppementC#\ITI-First-Game-SFML\Platformer\obj\Debug\netcoreapp1.1\Platformer.dll
+D:\DéveloppementC#\ITI-First-Game-SFML\Platformer\obj\Debug\netcoreapp1.1\Platformer.pdb
