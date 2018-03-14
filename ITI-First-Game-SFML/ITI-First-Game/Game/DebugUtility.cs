@@ -36,6 +36,8 @@ namespace ITI_First_Game
             text3.Position = new Vector2f(4f, 48f);
             text3.Color = fontColor;
 
+            //if (fps < 59) Console.WriteLine("FPS: " + fpsStr);
+
             gameLoop.Window.Draw(text);
             gameLoop.Window.Draw(text2);
             gameLoop.Window.Draw(text3);

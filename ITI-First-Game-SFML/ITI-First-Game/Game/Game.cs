@@ -16,7 +16,7 @@ namespace ITI_First_Game
         Tilemap _map;
         Texture _tileset;
 
-        public Game() : base (DEFAULT_WINDOW_WIDTH, DEFAULT_WINDOW_HEIGHT, WINDOW_TITLE, Color.Cyan)
+        public Game() : base (DEFAULT_WINDOW_WIDTH, DEFAULT_WINDOW_HEIGHT, WINDOW_TITLE, Color.Black)
         {
         }
 

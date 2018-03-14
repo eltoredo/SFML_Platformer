@@ -9,8 +9,8 @@ namespace ITI_First_Game
     {
         #region Fields
 
-        //public const int TARGET_FPS = 60;
-        public const float TIME_UNTIL_UPDATE = 1f / 60;
+        public const int TARGET_FPS = 60;
+        public const float TIME_UNTIL_UPDATE = 1f / TARGET_FPS;
 
         static Texture _mouseTexture = new Texture("../Content/mousesad.png");
         static Sprite _mouseSprite;
@@ -21,6 +21,7 @@ namespace ITI_First_Game
         int _direction;
         float _speed;
         float deltaTime;
+        float deltaTest;
 
         #endregion
 
@@ -62,7 +63,7 @@ namespace ITI_First_Game
             //Window.SetFramerateLimit(60);
 
             Window.KeyPressed += WindowTitleChangingOrEscaping;
-            Window.KeyPressed += WindowPlayerMoved;
+            //Window.KeyPressed += WindowPlayerMoved;
 
             Window.MouseMoved += MouseMoved;
             Window.MouseLeft += MouseLeft;
@@ -107,6 +108,8 @@ namespace ITI_First_Game
 
                     _mouseSprite.Draw(Window, RenderStates.Default);
 
+                    Move();
+
                     if (_animFrames == 4) _animFrames = 0;
                     _playerSprite.TextureRect = new IntRect(_animFrames * 64, _direction, 64, 96);
                     ++_animFrames;
@@ -122,6 +125,24 @@ namespace ITI_First_Game
         public abstract void Initialize();
         public abstract void Update(GameTime gameTime);
         public abstract void Draw(GameTime gameTime);
+
+        private void Move()
+        {
+            if (Keyboard.IsKeyPressed(Keyboard.Key.Q))
+            {
+                _direction = 96;
+                _playerSprite.Position += new Vector2f(-_speed * deltaTime, 0f);
+            }
+
+            if (Keyboard.IsKeyPressed(Keyboard.Key.D))
+            {
+                _direction = 192;
+                _playerSprite.Position += new Vector2f(_speed * deltaTime, 0f);
+
+                Console.WriteLine("Delta time: " + deltaTime);
+                Console.WriteLine("Player's position: " + _playerSprite.Position);
+            }
+        }
 
         private void WindowClosed(object sender, EventArgs e)
         {
@@ -148,7 +169,7 @@ namespace ITI_First_Game
             //if (e.Button == Mouse.Button.Left) _playerSprite.Position = new Vector2f(e.X, e.Y);
         }
 
-        private void WindowPlayerMoved(object sender, KeyEventArgs e)
+        /*private void WindowPlayerMoved(object sender, KeyEventArgs e)
         {
             Console.WriteLine("Delta time: " + deltaTime);
 
@@ -163,7 +184,7 @@ namespace ITI_First_Game
                 _playerSprite.Position += new Vector2f(_speed * deltaTime, 0f);
                 Console.WriteLine("Player's position: " + _playerSprite.Position);
             }
-        }
+        }*/
 
         private void WindowTitleChangingOrEscaping(object sender, KeyEventArgs e)
         {
