@@ -9,7 +9,7 @@ namespace ITI_First_Game
     {
         #region Fields
 
-        public const int TARGET_FPS = 60;
+        public const int TARGET_FPS = 10;
         public const float TIME_UNTIL_UPDATE = 1f / TARGET_FPS;
 
         static Texture _mouseTexture = new Texture("../Content/mousesad.png");
@@ -21,7 +21,6 @@ namespace ITI_First_Game
         int _direction;
         float _speed;
         float deltaTime;
-        float deltaTest;
 
         #endregion
 
@@ -53,14 +52,14 @@ namespace ITI_First_Game
 
             _playerSprite = new Sprite(_playerTexture);
             //_playerSprite.TextureRect = new IntRect(0, 0, 64, 96);
-            _speed = 10000f;
+            _speed = 400f;
 
             this.WindowClearColor = windowClearColor;
             this.Window = new RenderWindow(new VideoMode(windowWidth, windowHeight), windowTitle);
             this.GameTime = new GameTime();
 
             Window.Closed += WindowClosed;
-            //Window.SetFramerateLimit(60);
+            Window.SetFramerateLimit(60);
 
             Window.KeyPressed += WindowTitleChangingOrEscaping;
             //Window.KeyPressed += WindowPlayerMoved;
@@ -97,6 +96,8 @@ namespace ITI_First_Game
 
                 totalTimeBeforeUpdate += deltaTime;
 
+                Move();
+
                 if (totalTimeBeforeUpdate >= TIME_UNTIL_UPDATE)
                 {
                     GameTime.Update(totalTimeBeforeUpdate, /*clock.ElapsedTime.AsSeconds()*/ totalTimeElapsed);
@@ -107,9 +108,7 @@ namespace ITI_First_Game
                     Window.Clear(WindowClearColor);
 
                     _mouseSprite.Draw(Window, RenderStates.Default);
-
-                    Move();
-
+                    
                     if (_animFrames == 4) _animFrames = 0;
                     _playerSprite.TextureRect = new IntRect(_animFrames * 64, _direction, 64, 96);
                     ++_animFrames;
