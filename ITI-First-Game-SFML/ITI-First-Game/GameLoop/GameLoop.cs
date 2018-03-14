@@ -9,8 +9,8 @@ namespace ITI_First_Game
     {
         #region Fields
 
-        public const int TARGET_FPS = 60;
-        public const float TIME_UNTIL_UPDATE = 1f / TARGET_FPS;
+        //public const int TARGET_FPS = 60;
+        public const float TIME_UNTIL_UPDATE = 1f / 20;
 
         static Texture _mouseTexture = new Texture("../Content/mousesad.png");
         static Sprite _mouseSprite;
@@ -20,7 +20,7 @@ namespace ITI_First_Game
         int _animFrames;
         int _direction;
         float _speed;
-        float deltaTime;
+        float _totalTimeForMovement;
 
         #endregion
 
@@ -52,14 +52,16 @@ namespace ITI_First_Game
 
             _playerSprite = new Sprite(_playerTexture);
             //_playerSprite.TextureRect = new IntRect(0, 0, 64, 96);
-            _speed = 1000f;
+            _speed = 10000f;
+            Clock _clock = new Clock();
+            _totalTimeForMovement = _clock.ElapsedTime.AsSeconds();
 
             this.WindowClearColor = windowClearColor;
             this.Window = new RenderWindow(new VideoMode(windowWidth, windowHeight), windowTitle);
             this.GameTime = new GameTime();
 
             Window.Closed += WindowClosed;
-            Window.SetFramerateLimit(60);
+            //Window.SetFramerateLimit(60);
 
             Window.KeyPressed += WindowTitleChangingOrEscaping;
             Window.KeyPressed += WindowPlayerMoved;
@@ -83,7 +85,7 @@ namespace ITI_First_Game
             float totalTimeBeforeUpdate = 0f;
             float previousTimeElapsed;//= 0f;
             previousTimeElapsed = clock.ElapsedTime.AsSeconds();
-            deltaTime = 0f;
+            float deltaTime = 0f;
             float totalTimeElapsed = 0f;
 
             while (Window.IsOpen)
@@ -150,18 +152,18 @@ namespace ITI_First_Game
 
         private void WindowPlayerMoved(object sender, KeyEventArgs e)
         {
-            Console.WriteLine(deltaTime);
+            //Console.WriteLine("Delta time: " + _totalTimeForMovement);
 
             if (e.Code == Keyboard.Key.Q)
             {
                 _direction = 96;
-                _playerSprite.Position += new Vector2f(-_speed * deltaTime, 0f);
+                _playerSprite.Position += new Vector2f(-_speed * _totalTimeForMovement, 0f);
             }
             if (e.Code == Keyboard.Key.D)
             {
                 _direction = 192;
-                _playerSprite.Position += new Vector2f(_speed * deltaTime, 0f);
-                Console.WriteLine(_playerSprite.Position);
+                _playerSprite.Position += new Vector2f(_speed * _totalTimeForMovement, 0f);
+                //Console.WriteLine("Player's position: " + _playerSprite.Position);
             }
         }
 
