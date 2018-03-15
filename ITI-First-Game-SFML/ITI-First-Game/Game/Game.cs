@@ -9,7 +9,7 @@ namespace ITI_First_Game
     public class Game : GameLoop
     {
         public const uint DEFAULT_WINDOW_WIDTH = 1280;
-        public const uint DEFAULT_WINDOW_HEIGHT = 960;
+        public const uint DEFAULT_WINDOW_HEIGHT = 720;
 
         public const string WINDOW_TITLE = "My new game";
 
